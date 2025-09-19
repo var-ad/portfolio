@@ -1,4 +1,3 @@
-# .github/workflows/snake.yml
 name: Generate Contribution Snake
 
 on:
@@ -6,13 +5,17 @@ on:
     - cron: "0 0 * * *"
   workflow_dispatch:
 
+permissions:
+  contents: write   # allow commits
+
 jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: Platane/snk@v3
-        id: snake-gif
+
+      - name: Generate Snake SVG
+        uses: Platane/snk@v3
         with:
           github_user_name: var-ad
           outputs: |
@@ -20,9 +23,15 @@ jobs:
             dist/github-snake-dark.svg?palette=222222,060010,f65020
             dist/github-snake-light.svg?palette=888888,a0a0a0,ffffff
 
-      - name: Deploy to GitHub Pages
-        if: success()
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: dist
+      - name: Move snake into public folder
+        run: |
+          mkdir -p public
+          cp dist/*.svg public/
+
+      - name: Commit and push changes
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add public/
+          git commit -m "chore: update snake [skip ci]" || echo "No changes to commit"
+          git push
