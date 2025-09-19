@@ -1,13 +1,10 @@
-# snake.yml
-
+# .github/workflows/snake.yml
 name: Generate Contribution Snake
 
 on:
   schedule:
-    # Runs at midnight UTC every day
     - cron: "0 0 * * *"
   workflow_dispatch:
-    # This allows you to manually trigger the workflow from the Actions tab
 
 jobs:
   generate:
@@ -22,12 +19,6 @@ jobs:
             dist/github-snake.svg
             dist/github-snake-dark.svg?palette=222222,060010,f65020
             dist/github-snake-light.svg?palette=888888,a0a0a0,ffffff
-        env:
-          # Optional: Use a Personal Access Token to avoid API rate limits
-          # Make sure to set this as a secret in your repo settings
-          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # Or a personal access token with repo scope
-          # GITHUB_PAT: ${{ secrets.YOUR_PAT_SECRET_NAME }}
 
       - name: Deploy to GitHub Pages
         if: success()
