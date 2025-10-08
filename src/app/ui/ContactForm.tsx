@@ -43,7 +43,7 @@ export default function ContactForm() {
       } else {
         setFeedback({ success: false, message: "Failed to send the message." });
       }
-    } catch (error) {
+    } catch {
       setFeedback({
         success: false,
         message: "An unexpected error occurred. Please try again.",

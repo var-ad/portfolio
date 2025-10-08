@@ -19,7 +19,7 @@ export default function Home() {
       <Navbar />
       <SectionLayout>
         <main className="flex min-h-screen items-center justify-center bg-background text-foreground">
-          <h1 className="text-5xl font-bold">Hello, I'm Varad Chaskar!</h1>
+          <h1 className="text-5xl font-bold">Hello, I&apos;m Varad Chaskar!</h1>
         </main>
         <div className="flex items-center justify-center w-full h-[50vh]">
           <Link
