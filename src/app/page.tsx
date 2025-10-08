@@ -11,8 +11,6 @@ import {
   IconBrandLinkedin,
   IconBrandX,
 } from "@tabler/icons-react";
-import snakedark from "../../public/github-snake-dark.png";
-import snakelight from "../../public/github-snake-light.png";
 import snakeall from "../../public/github-snake.svg";
 
 export default function Home() {
