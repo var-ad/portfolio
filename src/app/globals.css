@@ -37,3 +37,20 @@ body {
   color: var(--foreground);
   transition: background-color 0.3s, color 0.3s;
 }
+
+@layer utilities {
+  @keyframes scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-scroll {
+    animation: scroll var(--animation-duration, 40s) linear infinite
+      var(--animation-direction, forwards);
+    will-change: transform;
+  }
+}

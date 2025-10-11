@@ -4,6 +4,9 @@ import SectionLayout from "./SectionLayout";
 import { File, Mail } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { InfiniteMovingCards } from "./ui/InfiniteMovingCards";
+import { designs, experience, languages, projects } from "./lib/data";
+
 import {
   IconBrandDiscord,
   IconBrandGithub,
@@ -17,11 +20,11 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <SectionLayout>
-        <main className="flex min-h-screen items-center justify-center bg-background text-foreground">
-          <h1 className="text-5xl font-bold">Hello, I&apos;m Varad Chaskar!</h1>
-        </main>
-        <div className="flex items-center justify-center w-full h-[50vh]">
+      <SectionLayout className="flex flex-col items-start space-y-8 w-full">
+        <h1 className="text-4xl pt-4 font-black font-bubblegum h-1">
+          Hello! I&apos;m Varad Chaskar
+        </h1>
+        <div className="flex items-center justify-center w-full md:h-full">
           <Link
             href="https://github.com/var-ad"
             aria-label="GitHub"
@@ -35,7 +38,45 @@ export default function Home() {
             />
           </Link>
         </div>
+        <div className="flex flex-col space-y-4 text-justify font-mono">
+          <p>
+            Welcome to my for your information! I am Varad Chaskar, an aspiring
+            software developer from Pune, India. I love converting ideas into
+            products. I have worked with technologies like Python, Reactjs,
+            Nextjs, PostgreSQL, Nodejs etc.
+          </p>
 
+          <p>
+            Currently seeking Internship and Full Time Opportunities. I love to
+            work in fast paced environment where I get to challenge myself.
+          </p>
+
+          <p>
+            Currently I am working on{" "}
+            <Link
+              href="https://mirrormates.varad.fyi"
+              className="text-cyan-400"
+              target="_blank"
+            >
+              MirrorMates
+            </Link>{" "}
+          </p>
+
+          <p>I&apos;m open for work, collaboration and freelance projects.</p>
+        </div>
+        <h2 className="text-4xl font-bold text-left font-bubblegum">
+          Experience
+        </h2>
+        <h2 className="text-4xl font-bold text-left font-bubblegum">Work</h2>
+        <h2 className="text-4xl font-bold text-left font-bubblegum">Skills</h2>
+        <div>
+          <InfiniteMovingCards items={languages.slice(0, 10)} />
+          <InfiniteMovingCards
+            items={languages.slice(10, 20)}
+            direction="right"
+          />
+          <InfiniteMovingCards items={languages.slice(20)} />
+        </div>
         <h2 className="text-4xl font-bold text-left font-bubblegum">Contact</h2>
         <div className="flex flex-col md:flex-row h-full gap-4 font-mono">
           <div className="space-y-8 justify-between h-full gap-4 w-full md:w-1/2">
@@ -98,6 +139,9 @@ export default function Home() {
           </div>
           <ContactForm />
         </div>
+        <footer className="py-2 text-left font-bubblegum md:text-right text-lg">
+          Made with caffeine by Varad!
+        </footer>
       </SectionLayout>
     </>
   );
