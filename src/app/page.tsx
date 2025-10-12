@@ -5,7 +5,7 @@ import { File, Mail } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { InfiniteMovingCards } from "./ui/InfiniteMovingCards";
-import { designs, experience, languages, projects } from "./lib/data";
+import { languages } from "./lib/data";
 
 import {
   IconBrandDiscord,
