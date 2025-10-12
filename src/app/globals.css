@@ -54,3 +54,9 @@ body {
     will-change: transform;
   }
 }
+
+@layer base {
+  html {
+    scroll-padding-top: theme("spacing.20");
+  }
+}

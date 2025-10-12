@@ -21,7 +21,7 @@ export default function Home() {
     <>
       <Navbar />
       <SectionLayout className="flex flex-col items-start space-y-8 w-full">
-        <h1 className="text-4xl pt-4 font-black font-bubblegum h-1">
+        <h1 className="text-4xl -mt-8 font-black font-bubblegum h-0">
           Hello! I&apos;m Varad Chaskar
         </h1>
         <div className="flex items-center justify-center w-full md:h-full">
@@ -64,11 +64,21 @@ export default function Home() {
 
           <p>I&apos;m open for work, collaboration and freelance projects.</p>
         </div>
-        <h2 className="text-4xl font-bold text-left font-bubblegum">
+        <h2
+          className="text-4xl font-bold text-left font-bubblegum "
+          id="experience"
+        >
           Experience
         </h2>
-        <h2 className="text-4xl font-bold text-left font-bubblegum">Work</h2>
-        <h2 className="text-4xl font-bold text-left font-bubblegum">Skills</h2>
+        <h2
+          className="text-4xl font-bold text-left font-bubblegum"
+          id="projects"
+        >
+          Projects
+        </h2>
+        <h2 className="text-4xl font-bold text-left font-bubblegum" id="skills">
+          Skills
+        </h2>
         <div>
           <InfiniteMovingCards items={languages.slice(0, 10)} />
           <InfiniteMovingCards
