@@ -1,3 +1,33 @@
+export const experience = [
+  {
+    title: "Project Intern",
+    description: ["xdd", "xdd", "xdd"],
+    company: "ArrayPointer",
+    location: "Pune, India",
+    duration: "Jul 2025 - Present",
+    technologies: ["Python", "ReactJS", "PostgreSQL", "MongoDB", "Javascript"],
+  },
+  {
+    title: "Full Stack Developer Intern",
+    description: [
+      "Worked on multiple projects for smaller businesses and institutions using modern frameworks",
+      "Independently developed a Warehouse Management System customizing GreaterWMS using React, Node, Prisma, PostgreSQL and AWS",
+      "Implemented real-time inventory tracking, role-based access control, and AI-driven restocking logic to improve warehouse efficiency",
+    ],
+    company: "NN Services Pvt Ltd",
+    location: "Remote",
+    duration: "Jan 2025 - Apr 2025",
+    technologies: [
+      "ReactJS",
+      "NodeJS",
+      "PostgreSQL",
+      "Prisma",
+      "AWS",
+      "Python",
+    ],
+  },
+];
+
 export const languages = [
   { name: "HTML", image: "/assets/skills/html5.svg" },
   { name: "CSS", image: "/assets/skills/css3.svg" },

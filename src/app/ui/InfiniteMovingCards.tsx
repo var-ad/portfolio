@@ -90,7 +90,7 @@ export const InfiniteMovingCards = ({
                 className="size-8"
               />
             )}
-            <p className="text-sm md:text-base text-gray-300 text-center font-medium">
+            <p className="text-sm md:text-base text-center font-medium">
               {item.name}
             </p>
           </li>

@@ -1,11 +1,12 @@
 import Navbar from "./ui/Navbar";
 import ContactForm from "./ui/ContactForm";
+import ExperienceCard from "./ui/ExperienceCard";
 import SectionLayout from "./SectionLayout";
 import { File, Mail } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { InfiniteMovingCards } from "./ui/InfiniteMovingCards";
-import { languages } from "./lib/data";
+import { languages, experience } from "./lib/data";
 
 import {
   IconBrandDiscord,
@@ -55,7 +56,7 @@ export default function Home() {
             Currently I am working on{" "}
             <Link
               href="https://mirrormates.varad.fyi"
-              className="text-cyan-400"
+              className="text-cyan-800"
               target="_blank"
             >
               MirrorMates
@@ -70,6 +71,19 @@ export default function Home() {
         >
           Experience
         </h2>
+        <div className="w-full flex-col space-y-4">
+          {experience.map((exp, idx) => (
+            <ExperienceCard
+              title={exp.title}
+              description={exp.description}
+              company={exp.company}
+              location={exp.location}
+              duration={exp.duration}
+              technologies={exp.technologies}
+              key={idx}
+            />
+          ))}
+        </div>
         <h2
           className="text-4xl font-bold text-left font-bubblegum"
           id="projects"
@@ -100,7 +114,7 @@ export default function Home() {
               </div>
               <div className="flex items-center gap-2">
                 <File />{" "}
-                <Link href="resume.varad.fyi" target="_blanks">
+                <Link href="https://resume.varad.fyi" target="_blanks">
                   Resume
                 </Link>
               </div>
