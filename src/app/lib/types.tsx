@@ -1,9 +1,10 @@
 import { StaticImageData } from "next/image";
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
 export type TechType = {
-  name: String;
-  color: String;
-  image: String;
+  name: string;
+  color: string;
+  image: string;
 };
 
 export type ProjectDetails = {
@@ -16,6 +17,6 @@ export type ProjectDetails = {
 };
 export type Skill = {
   name: string;
-  icon: any;
+  icon: StaticImport | string;
   color: string;
 };
