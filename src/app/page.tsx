@@ -1,3 +1,5 @@
+"use client";
+
 import Navbar from "./ui/Navbar";
 import ContactForm from "./ui/ContactForm";
 import ExperienceCard from "./ui/ExperienceCard";
@@ -14,6 +16,8 @@ import {
   IconBrandInstagram,
   IconBrandLinkedin,
   IconBrandX,
+  IconBrandLeetcode,
+  IconCopy,
 } from "@tabler/icons-react";
 import snakeall from "../../public/github-snake.svg";
 
@@ -21,11 +25,11 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <SectionLayout className="flex flex-col items-start space-y-8 w-full">
-        <h1 className="text-4xl -mt-8 font-black font-bubblegum h-0">
+      <SectionLayout className="flex flex-col items-start space-y-4 w-full">
+        <h1 className="text-4xl font-black font-bubblegum mb-0">
           Hello! I&apos;m Varad Chaskar
         </h1>
-        <div className="flex items-center justify-center w-full md:h-full">
+        <div className="flex items-center justify-center w-full md:h-full mt-0">
           <Link
             href="https://github.com/var-ad"
             aria-label="GitHub"
@@ -93,7 +97,7 @@ export default function Home() {
         <h2 className="text-4xl font-bold text-left font-bubblegum" id="skills">
           Skills
         </h2>
-        <div>
+        <div className="w-full px-4 sm:px-6 md:px-8 overflow-hidden">
           <InfiniteMovingCards items={languages.slice(0, 10)} />
           <InfiniteMovingCards
             items={languages.slice(10, 20)}
@@ -109,12 +113,48 @@ export default function Home() {
               Feel free to reach out to me on any of the platforms below.
             </p>
             <div className="flex gap-2 flex-col">
-              <div className="flex items-center gap-2">
-                <Mail /> varad.chaskar.27@gmail.com
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-2">
+                  <Mail />
+                  <Link
+                    href="mailto:varad.chaskar.27@gmail.com"
+                    target="_blank"
+                  >
+                    varad.chaskar.27@gmail.com
+                  </Link>
+                </div>
+                <button
+                  onClick={() => {
+                    const email = "varad.chaskar.27@gmail.com";
+                    if (
+                      navigator.clipboard &&
+                      typeof navigator.clipboard.writeText === "function"
+                    ) {
+                      navigator.clipboard.writeText(email).catch(() => {
+                        const textarea = document.createElement("textarea");
+                        textarea.value = email;
+                        document.body.appendChild(textarea);
+                        textarea.select();
+                        document.execCommand("copy");
+                        document.body.removeChild(textarea);
+                      });
+                    } else {
+                      const textarea = document.createElement("textarea");
+                      textarea.value = email;
+                      document.body.appendChild(textarea);
+                      textarea.select();
+                      document.execCommand("copy");
+                      document.body.removeChild(textarea);
+                    }
+                  }}
+                  className="text-sm rounded-md hover:bg-gray-700 transition-all p-1"
+                >
+                  <IconCopy />
+                </button>
               </div>
               <div className="flex items-center gap-2">
                 <File />{" "}
-                <Link href="https://resume.varad.fyi" target="_blanks">
+                <Link href="https://resume.varad.fyi" target="_blank">
                   Resume
                 </Link>
               </div>
@@ -126,6 +166,14 @@ export default function Home() {
                 className="p-2  hover:border-gray-500 border rounded-full hover:bg-gray-500 hover:text-white cursor-pointer"
               >
                 <IconBrandGithub />
+              </Link>
+
+              <Link
+                target="_blank"
+                href="https://leetcode.com/u/varad2711/"
+                className="p-2 rounded-full border hover:border-[#FFA116] hover:bg-[#FFA116] hover:text-white cursor-pointer transition-all"
+              >
+                <IconBrandLeetcode />
               </Link>
 
               <Link
