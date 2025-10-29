@@ -4,7 +4,7 @@ import Navbar from "./ui/Navbar";
 import ContactForm from "./ui/ContactForm";
 import ExperienceCard from "./ui/ExperienceCard";
 import SectionLayout from "./SectionLayout";
-import { File, Mail } from "lucide-react";
+import { File, Mail, Phone } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { InfiniteMovingCards } from "./ui/InfiniteMovingCards";
@@ -152,6 +152,40 @@ export default function Home() {
                   <IconCopy />
                 </button>
               </div>
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-2">
+                  <Phone />
+                  +91 9697345454
+                </div>
+                <button
+                  onClick={() => {
+                    const phone = "9697345454";
+                    if (
+                      navigator.clipboard &&
+                      typeof navigator.clipboard.writeText === "function"
+                    ) {
+                      navigator.clipboard.writeText(phone).catch(() => {
+                        const textarea = document.createElement("textarea");
+                        textarea.value = phone;
+                        document.body.appendChild(textarea);
+                        textarea.select();
+                        document.execCommand("copy");
+                        document.body.removeChild(textarea);
+                      });
+                    } else {
+                      const textarea = document.createElement("textarea");
+                      textarea.value = phone;
+                      document.body.appendChild(textarea);
+                      textarea.select();
+                      document.execCommand("copy");
+                      document.body.removeChild(textarea);
+                    }
+                  }}
+                  className="text-sm rounded-md hover:bg-gray-700 transition-all p-1"
+                >
+                  <IconCopy />
+                </button>
+              </div>
               <div className="flex items-center gap-2">
                 <File />{" "}
                 <Link href="https://resume.varad.fyi" target="_blank">
@@ -211,9 +245,6 @@ export default function Home() {
           </div>
           <ContactForm />
         </div>
-        <footer className="py-2 text-left font-bubblegum md:text-right text-lg">
-          Made with caffeine by Varad!
-        </footer>
       </SectionLayout>
     </>
   );

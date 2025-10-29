@@ -18,7 +18,7 @@ export default function Navbar() {
           </Link>
         </div>
 
-        <ul className="flex gap-8 text-2xl">
+        <ul className="flex gap-4 text-base sm:gap-8 sm:text-2xl flex-wrap justify-center">
           <li className="cursor-pointer">
             <Link href="/">Home</Link>
           </li>
