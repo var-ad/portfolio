@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Bubblegum_Sans, JetBrains_Mono } from "next/font/google";
 import ThemeProvider from "./ThemeProvider";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const bubblegumSans = Bubblegum_Sans({
@@ -51,6 +52,7 @@ export default function RootLayout({
       <body className="antialiased">
         <ThemeProvider />
         {children}
+        <Analytics />
       </body>
     </html>
   );
