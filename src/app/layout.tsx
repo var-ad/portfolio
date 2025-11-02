@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Bubblegum_Sans, JetBrains_Mono } from "next/font/google";
 import ThemeProvider from "./ThemeProvider";
-import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const bubblegumSans = Bubblegum_Sans({
@@ -52,7 +51,11 @@ export default function RootLayout({
       <body className="antialiased">
         <ThemeProvider />
         {children}
-        <Analytics />
+        <script
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "fdec20af523b49f4a52f4a83907f6c66"}'
+        ></script>
       </body>
     </html>
   );
