@@ -1,7 +1,11 @@
 export const experience = [
   {
     title: "Project Intern",
-    description: ["xdd", "xdd", "xdd"],
+    description: [
+      "Developing a Speech Emotion Recognition system that classifies emotions from voice input by fine-tuning DL models",
+      "Integrating real-time inference through an SDK, for seamless interaction between the model and applications",
+      "Designing an optimized audio pipeline for low-latency preprocessing and accurate model inference",
+    ],
     company: "ArrayPointer",
     location: "Pune, India",
     duration: "Jul 2025 - Present",
