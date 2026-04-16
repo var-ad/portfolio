@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { SendEmail } from "../actions/SendEmail";
+import Toast from "./Toast";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -11,13 +12,14 @@ export default function ContactForm() {
     message: "",
   });
   const [loading, setLoading] = useState(false);
-  const [feedback, setFeedback] = useState<{
-    success: boolean;
+  const [toast, setToast] = useState<{
     message: string;
-  } | null>(null);
+    type: "success" | "error";
+    visible: boolean;
+  }>({ message: "", type: "success", visible: false });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -25,12 +27,13 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setFeedback(null);
+    setToast((s) => ({ ...s, visible: false }));
 
     if (!formData.phone && !formData.email) {
-      setFeedback({
-        success: false,
+      setToast({
         message: "Please provide either a phone number or an email address.",
+        type: "error",
+        visible: true,
       });
       setLoading(false);
       return;
@@ -38,15 +41,24 @@ export default function ContactForm() {
     try {
       const result = await SendEmail(formData);
       if (result.success) {
-        setFeedback({ success: true, message: "Message sent successfully!" });
+        setToast({
+          message: "Message sent successfully!",
+          type: "success",
+          visible: true,
+        });
         setFormData({ name: "", phone: "", email: "", message: "" });
       } else {
-        setFeedback({ success: false, message: "Failed to send the message." });
+        setToast({
+          message: "Failed to send the message.",
+          type: "error",
+          visible: true,
+        });
       }
     } catch {
-      setFeedback({
-        success: false,
+      setToast({
         message: "An unexpected error occurred. Please try again.",
+        type: "error",
+        visible: true,
       });
     } finally {
       setLoading(false);
@@ -110,14 +122,12 @@ export default function ContactForm() {
           {loading ? "Sending..." : "Send Message"}
         </button>
       </div>
-      {feedback && (
-        <p
-          className={`text-center mt-4 ${
-            feedback.success ? "text-green-600" : "text-red-600"
-          }`}
-        >
-          {feedback.message}
-        </p>
+      {toast.visible && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast((s) => ({ ...s, visible: false }))}
+        />
       )}
     </form>
   );

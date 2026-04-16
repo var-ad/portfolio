@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "../lib/utils";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import Image from "next/image";
 export const InfiniteMovingCards = ({
   items,
@@ -22,13 +22,7 @@ export const InfiniteMovingCards = ({
   const containerRef = React.useRef<HTMLDivElement>(null);
   const scrollerRef = React.useRef<HTMLUListElement>(null);
 
-  useEffect(() => {
-    addAnimation();
-  }, []);
-
-  const [start, setStart] = useState(false);
-
-  function addAnimation() {
+  const addAnimation = useCallback(() => {
     if (containerRef.current && scrollerRef.current) {
       const scrollerContent = Array.from(scrollerRef.current.children);
 
@@ -39,29 +33,26 @@ export const InfiniteMovingCards = ({
         }
       });
 
-      getDirection();
-      getSpeed();
+      if (containerRef.current) {
+        containerRef.current.style.setProperty(
+          "--animation-direction",
+          direction === "left" ? "forwards" : "reverse",
+        );
+
+        containerRef.current.style.setProperty(
+          "--animation-duration",
+          speed === "fast" ? "30s" : speed === "normal" ? "40s" : "80s",
+        );
+      }
+
       setStart(true);
     }
-  }
+  }, [direction, speed]);
 
-  const getDirection = () => {
-    if (containerRef.current) {
-      containerRef.current.style.setProperty(
-        "--animation-direction",
-        direction === "left" ? "forwards" : "reverse"
-      );
-    }
-  };
-
-  const getSpeed = () => {
-    if (containerRef.current) {
-      containerRef.current.style.setProperty(
-        "--animation-duration",
-        speed === "fast" ? "30s" : speed === "normal" ? "40s" : "80s"
-      );
-    }
-  };
+  useEffect(() => {
+    addAnimation();
+  }, [addAnimation]);
+  const [start, setStart] = useState(false);
 
   return (
     <div
@@ -73,7 +64,7 @@ export const InfiniteMovingCards = ({
         className={cn(
           "flex gap-6 py-4 animate-scroll w-max",
           start && "animate-scroll",
-          pauseOnHover && "hover:[animation-play-state:paused]"
+          pauseOnHover && "hover:[animation-play-state:paused]",
         )}
       >
         {items.map((item) => (
