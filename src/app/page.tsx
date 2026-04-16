@@ -21,6 +21,69 @@ import {
 } from "@tabler/icons-react";
 import snakeall from "../../public/github-snake.svg";
 
+type SocialLink = {
+  href: string;
+  label: string;
+  Icon: typeof IconBrandGithub;
+};
+
+const socialLinks: SocialLink[] = [
+  {
+    href: "https://github.com/var-ad",
+    label: "GitHub",
+    Icon: IconBrandGithub,
+  },
+  {
+    href: "https://leetcode.com/u/varad2711/",
+    label: "LeetCode",
+    Icon: IconBrandLeetcode,
+  },
+  {
+    href: "https://x.com/vichstein",
+    label: "X",
+    Icon: IconBrandX,
+  },
+  {
+    href: "https://www.linkedin.com/in/varad-chaskar/",
+    label: "LinkedIn",
+    Icon: IconBrandLinkedin,
+  },
+  {
+    href: "https://www.instagram.com/_varadd_",
+    label: "Instagram",
+    Icon: IconBrandInstagram,
+  },
+  {
+    href: "https://discord.com/users/756488390744211467",
+    label: "Discord",
+    Icon: IconBrandDiscord,
+  },
+];
+
+async function copyTextToClipboard(value: string) {
+  if (
+    navigator.clipboard &&
+    typeof navigator.clipboard.writeText === "function"
+  ) {
+    try {
+      await navigator.clipboard.writeText(value);
+      return;
+    } catch {
+      // Fall back to textarea copy when clipboard API fails.
+    }
+  }
+
+  const textarea = document.createElement("textarea");
+  textarea.value = value;
+  textarea.style.position = "fixed";
+  textarea.style.opacity = "0";
+  document.body.appendChild(textarea);
+  textarea.focus();
+  textarea.select();
+  document.execCommand("copy");
+  document.body.removeChild(textarea);
+}
+
 export default function Home() {
   return (
     <>
@@ -60,7 +123,7 @@ export default function Home() {
             Currently I am working on{" "}
             <Link
               href="https://mirrormates.varad.fyi"
-              className="text-cyan-800"
+              className="text-accent underline-offset-4 hover:underline"
               target="_blank"
             >
               MirrorMates
@@ -125,29 +188,10 @@ export default function Home() {
                 </div>
                 <button
                   onClick={() => {
-                    const email = "varad.chaskar.27@gmail.com";
-                    if (
-                      navigator.clipboard &&
-                      typeof navigator.clipboard.writeText === "function"
-                    ) {
-                      navigator.clipboard.writeText(email).catch(() => {
-                        const textarea = document.createElement("textarea");
-                        textarea.value = email;
-                        document.body.appendChild(textarea);
-                        textarea.select();
-                        document.execCommand("copy");
-                        document.body.removeChild(textarea);
-                      });
-                    } else {
-                      const textarea = document.createElement("textarea");
-                      textarea.value = email;
-                      document.body.appendChild(textarea);
-                      textarea.select();
-                      document.execCommand("copy");
-                      document.body.removeChild(textarea);
-                    }
+                    void copyTextToClipboard("varad.chaskar.27@gmail.com");
                   }}
-                  className="text-sm rounded-md hover:bg-gray-700 transition-all p-1"
+                  className="icon-button text-sm"
+                  aria-label="Copy email"
                 >
                   <IconCopy />
                 </button>
@@ -159,29 +203,10 @@ export default function Home() {
                 </div>
                 <button
                   onClick={() => {
-                    const phone = "9697345454";
-                    if (
-                      navigator.clipboard &&
-                      typeof navigator.clipboard.writeText === "function"
-                    ) {
-                      navigator.clipboard.writeText(phone).catch(() => {
-                        const textarea = document.createElement("textarea");
-                        textarea.value = phone;
-                        document.body.appendChild(textarea);
-                        textarea.select();
-                        document.execCommand("copy");
-                        document.body.removeChild(textarea);
-                      });
-                    } else {
-                      const textarea = document.createElement("textarea");
-                      textarea.value = phone;
-                      document.body.appendChild(textarea);
-                      textarea.select();
-                      document.execCommand("copy");
-                      document.body.removeChild(textarea);
-                    }
+                    void copyTextToClipboard("9697345454");
                   }}
-                  className="text-sm rounded-md hover:bg-gray-700 transition-all p-1"
+                  className="icon-button text-sm"
+                  aria-label="Copy phone number"
                 >
                   <IconCopy />
                 </button>
@@ -194,53 +219,17 @@ export default function Home() {
               </div>
             </div>
             <div className="flex flex-wrap gap-4">
-              <Link
-                target="_blank"
-                href="https://github.com/var-ad"
-                className="p-2  hover:border-gray-500 border rounded-full hover:bg-gray-500 hover:text-white cursor-pointer"
-              >
-                <IconBrandGithub />
-              </Link>
-
-              <Link
-                target="_blank"
-                href="https://leetcode.com/u/varad2711/"
-                className="p-2 rounded-full border hover:border-[#FFA116] hover:bg-[#FFA116] hover:text-white cursor-pointer transition-all"
-              >
-                <IconBrandLeetcode />
-              </Link>
-
-              <Link
-                target="_blank"
-                href="https://x.com/vichstein"
-                className="p-2 rounded-full  hover:border-black border hover:bg-black hover:text-white cursor-pointer"
-              >
-                <IconBrandX />
-              </Link>
-
-              <Link
-                target="_blank"
-                href="https://www.linkedin.com/in/varad-chaskar/"
-                className="p-2 rounded-full hover:border-blue-700 border hover:bg-blue-700 hover:text-white cursor-pointer"
-              >
-                <IconBrandLinkedin />
-              </Link>
-
-              <Link
-                target="_blank"
-                href="https://www.instagram.com/_varadd_"
-                className="p-2 rounded-full  hover:border-pink-500 border hover:bg-pink-500 hover:text-white cursor-pointer"
-              >
-                <IconBrandInstagram />
-              </Link>
-
-              <Link
-                target="_blank"
-                href="https://discord.com/users/756488390744211467"
-                className="p-2 rounded-full  hover:border-indigo-600 border hover:bg-indigo-600 hover:text-white cursor-pointer"
-              >
-                <IconBrandDiscord />
-              </Link>
+              {socialLinks.map(({ href, label, Icon }) => (
+                <Link
+                  key={label}
+                  target="_blank"
+                  href={href}
+                  aria-label={label}
+                  className="flex size-10 items-center justify-center rounded-full border border-border bg-surface transition-colors hover:bg-surface-elevated hover:text-accent"
+                >
+                  <Icon size={20} />
+                </Link>
+              ))}
             </div>
           </div>
           <ContactForm />

@@ -70,7 +70,7 @@ export const InfiniteMovingCards = ({
         {items.map((item) => (
           <li
             key={item.name}
-            className="w-fit rounded-sm border shadow-md hover:shadow-xl transition-all duration-300 px-4 py-2 flex items-center justify-center gap-4"
+            className="flex w-fit items-center justify-center gap-4 rounded-sm border border-border bg-surface-elevated px-4 py-2 shadow-sm transition-shadow duration-300 hover:shadow-md"
           >
             {item.image && (
               <Image

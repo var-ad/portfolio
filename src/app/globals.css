@@ -1,33 +1,128 @@
 @import "tailwindcss";
 
+:root {
+  --background: #b3d9ff;
+  --foreground: #002147;
+  --surface: #dceeff;
+  --surface-elevated: #edf6ff;
+  --border-color: #8cb4d8;
+  --muted: #365980;
+  --accent: #005f99;
+  --accent-foreground: #f5fbff;
+  --success-bg: #d7f5e6;
+  --success: #11653f;
+  --success-border: #83c9a4;
+  --error-bg: #fde5e8;
+  --error: #8a2233;
+  --error-border: #e9a8b1;
+  --shadow-color: rgb(0 33 71 / 28%);
+}
+
 :root[data-theme="morning"] {
   --background: #b3d9ff;
   --foreground: #002147;
+  --surface: #dceeff;
+  --surface-elevated: #edf6ff;
+  --border-color: #8cb4d8;
+  --muted: #365980;
+  --accent: #005f99;
+  --accent-foreground: #f5fbff;
+  --success-bg: #d7f5e6;
+  --success: #11653f;
+  --success-border: #83c9a4;
+  --error-bg: #fde5e8;
+  --error: #8a2233;
+  --error-border: #e9a8b1;
+  --shadow-color: rgb(0 33 71 / 28%);
 }
 
 :root[data-theme="afternoon"] {
   --background: #fff5e1;
   --foreground: #4b2e00;
+  --surface: #fff0d0;
+  --surface-elevated: #fff8ea;
+  --border-color: #d8bd90;
+  --muted: #7b6036;
+  --accent: #9a5a00;
+  --accent-foreground: #fff7ea;
+  --success-bg: #e7f4dd;
+  --success: #2f5f25;
+  --success-border: #a7c993;
+  --error-bg: #fde8e3;
+  --error: #8b2f20;
+  --error-border: #e6b39f;
+  --shadow-color: rgb(75 46 0 / 20%);
 }
 
 :root[data-theme="evening"] {
   --background: #ffb266;
   --foreground: #2f2f2f;
+  --surface: #ffc88f;
+  --surface-elevated: #ffd7ad;
+  --border-color: #b7814b;
+  --muted: #5f4e3a;
+  --accent: #8f3f00;
+  --accent-foreground: #fff4ea;
+  --success-bg: #e7f2de;
+  --success: #2e5e2c;
+  --success-border: #9fc18d;
+  --error-bg: #fce6e1;
+  --error: #872c24;
+  --error-border: #dfaba6;
+  --shadow-color: rgb(47 47 47 / 20%);
 }
 
 :root[data-theme="night"] {
   --background: #1a1a1a;
   --foreground: #e0e0e0;
+  --surface: #232323;
+  --surface-elevated: #2d2d2d;
+  --border-color: #3e3e3e;
+  --muted: #a5a5a5;
+  --accent: #58a6ff;
+  --accent-foreground: #07121f;
+  --success-bg: #183427;
+  --success: #b6f2cf;
+  --success-border: #2f6648;
+  --error-bg: #3a1d23;
+  --error: #ffc6cf;
+  --error-border: #7d3644;
+  --shadow-color: rgb(0 0 0 / 50%);
 }
 
 :root[data-theme="latenight"] {
   --background: #121212;
   --foreground: #b0b0b0;
+  --surface: #1b1b1b;
+  --surface-elevated: #252525;
+  --border-color: #313131;
+  --muted: #8f8f8f;
+  --accent: #4f8cc9;
+  --accent-foreground: #04111f;
+  --success-bg: #152c21;
+  --success: #a7ddbf;
+  --success-border: #2b5740;
+  --error-bg: #341a20;
+  --error: #efb4be;
+  --error-border: #6f303d;
+  --shadow-color: rgb(0 0 0 / 55%);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-border: var(--border-color);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-success-bg: var(--success-bg);
+  --color-success: var(--success);
+  --color-success-border: var(--success-border);
+  --color-error-bg: var(--error-bg);
+  --color-error: var(--error);
+  --color-error-border: var(--error-border);
   --font-sans: var(--font-bubblegum-sans);
   --font-mono: var(--font-jetbrains-mono);
 }
@@ -35,7 +130,33 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    border-color 0.3s;
+}
+
+a {
+  transition: color 0.2s ease;
+}
+
+@layer components {
+  .card-surface {
+    @apply rounded-lg border border-border bg-surface;
+    box-shadow: 0 16px 34px -24px var(--shadow-color);
+  }
+
+  .themed-input {
+    @apply w-full rounded-sm border border-border bg-surface px-3 py-3 text-foreground placeholder:text-muted transition-colors;
+  }
+
+  .themed-input:focus-visible {
+    @apply outline-none ring-2 ring-accent;
+  }
+
+  .icon-button {
+    @apply rounded-md border border-transparent p-1 text-foreground transition-colors hover:border-border hover:bg-surface-elevated;
+  }
 }
 
 @layer utilities {

@@ -20,18 +20,19 @@ export default function Toast({
     return () => clearTimeout(t);
   }, [onClose, duration]);
 
+  const toneClasses =
+    type === "success"
+      ? "border-success-border bg-success-bg text-success"
+      : "border-error-border bg-error-bg text-error";
+
   return (
     <div
       role="status"
       aria-live="polite"
-      className={`fixed right-4 bottom-6 max-w-xs w-full z-50 shadow-lg rounded-md px-4 py-3 text-sm flex items-start gap-3 transition-opacity bg-white dark:bg-slate-800 border ${
-        type === "success"
-          ? "border-green-200 text-green-800"
-          : "border-red-200 text-red-800"
-      }`}
+      className={`fixed bottom-6 right-4 z-50 flex w-full max-w-xs items-start gap-3 rounded-md border px-4 py-3 text-sm shadow-lg transition-opacity ${toneClasses}`}
     >
       <div className="flex-1">
-        <div className="font-medium">
+        <div className="font-semibold">
           {type === "success" ? "Success" : "Error"}
         </div>
         <div className="mt-1">{message}</div>
@@ -39,7 +40,7 @@ export default function Toast({
       <button
         onClick={() => onClose && onClose()}
         aria-label="Close notification"
-        className="text-xs opacity-70 hover:opacity-100"
+        className="rounded-sm text-xs opacity-70 transition-opacity hover:opacity-100"
       >
         ×
       </button>

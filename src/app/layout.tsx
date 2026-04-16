@@ -3,6 +3,18 @@ import { Bubblegum_Sans, JetBrains_Mono } from "next/font/google";
 import ThemeProvider from "./ThemeProvider";
 import "./globals.css";
 
+const themeInitScript = `
+  (function () {
+    var hour = new Date().getHours();
+    var theme = "morning";
+    if (hour >= 12 && hour < 17) theme = "afternoon";
+    else if (hour >= 17 && hour < 20) theme = "evening";
+    else if (hour >= 20 && hour < 24) theme = "night";
+    else if (hour < 6) theme = "latenight";
+    document.documentElement.dataset.theme = theme;
+  })();
+`;
+
 const bubblegumSans = Bubblegum_Sans({
   weight: "400",
   style: "normal",
@@ -47,7 +59,11 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${jetBrainsMono.variable} ${bubblegumSans.variable}`}
+      suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body className="antialiased">
         <ThemeProvider />
         {children}

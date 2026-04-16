@@ -74,7 +74,7 @@ export default function ContactForm() {
             value={formData.name}
             onChange={handleChange}
             placeholder="Full Name"
-            className="w-full p-3 border bg-transparent rounded-sm text-foreground"
+            className="themed-input"
             required
           />
         </div>
@@ -86,7 +86,7 @@ export default function ContactForm() {
             value={formData.phone}
             onChange={handleChange}
             placeholder="Phone Number"
-            className="w-full p-3 border bg-transparent rounded-sm text-foreground"
+            className="themed-input"
           />
         </div>
       </div>
@@ -97,7 +97,7 @@ export default function ContactForm() {
           value={formData.email}
           onChange={handleChange}
           placeholder="Email"
-          className="w-full p-3 border bg-transparent rounded-sm text-foreground"
+          className="themed-input"
         />
       </div>
       <div>
@@ -107,14 +107,14 @@ export default function ContactForm() {
           onChange={handleChange}
           placeholder="Write your message here..."
           rows={3}
-          className="w-full p-3 border bg-transparent rounded-sm text-foreground"
+          className="themed-input min-h-28 resize-y"
           required
         ></textarea>
       </div>
       <div className="flex justify-center">
         <button
           type="submit"
-          className={`px-6 py-3 w-full rounded-sm text-white text-lg font-medium bg-black hover:bg-black/45 transition ${
+          className={`w-full rounded-sm bg-accent px-6 py-3 text-lg font-medium text-accent-foreground transition hover:brightness-110 ${
             loading ? "opacity-70 cursor-not-allowed" : ""
           }`}
           disabled={loading}
