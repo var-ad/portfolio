@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     title: "Varad Chaskar",
     description: "Software Developer",
     images: [
-      "https://res.cloudinary.com/kakarot/image/upload/v1753208564/portfolio.png", // Link to your image
+      "https://res.cloudinary.com/dyfgrjqsw/image/upload/v1776610725/portfolio.png", // Link to your image
     ],
   },
   twitter: {
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     title: "Varad Chaskar",
     description: "Software Developer",
     images: [
-      "https://res.cloudinary.com/kakarot/image/upload/v1753208564/portfolio.png", // Link to your image
+      "https://res.cloudinary.com/dyfgrjqsw/image/upload/v1776610725/portfolio.png", // Link to your image
     ],
   },
 };
