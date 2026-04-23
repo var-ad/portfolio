@@ -3,12 +3,13 @@
 import Navbar from "./ui/Navbar";
 import ContactForm from "./ui/ContactForm";
 import ExperienceCard from "./ui/ExperienceCard";
+import { WorkCard } from "./ui/WorkCard";
 import SectionLayout from "./SectionLayout";
 import { File, Mail, Phone } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { InfiniteMovingCards } from "./ui/InfiniteMovingCards";
-import { languages, experience } from "./lib/data";
+import { languages, experience, projects } from "./lib/data";
 
 import {
   IconBrandDiscord,
@@ -151,12 +152,27 @@ export default function Home() {
             />
           ))}
         </div>
-        <h2
-          className="text-4xl font-bold text-left font-bubblegum"
-          id="projects"
-        >
-          Projects
+        {/* WORK SECTION */}
+        <h2 id="projects" className="text-4xl font-bold font-bubblegum">
+          Work
         </h2>
+        <div className="mt-6 grid w-full grid-cols-1 gap-8 md:grid-cols-2">
+          {projects.map((project, idx) => (
+            <WorkCard
+              key={idx}
+              image={project.image}
+              description={project.description}
+              title={project.title}
+              github={project.github}
+              githubFrontend={project.githubFrontend}
+              githubBackend={project.githubBackend}
+              healthFrontend={project.healthFrontend}
+              healthBackend={project.healthBackend}
+              live={project.live}
+              tech={project.tech}
+            />
+          ))}
+        </div>
         <h2 className="text-4xl font-bold text-left font-bubblegum" id="skills">
           Skills
         </h2>

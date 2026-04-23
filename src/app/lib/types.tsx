@@ -8,11 +8,15 @@ export type TechType = {
 };
 
 export type ProjectDetails = {
-  image: StaticImageData;
+  image: StaticImageData | string;
   title: string;
   description: string;
   tech: string[];
-  github: string | null;
+  github?: string | null;
+  githubFrontend?: string | null;
+  githubBackend?: string | null;
+  healthFrontend?: string | null;
+  healthBackend?: string | null;
   live: string | null;
 };
 export type Skill = {

@@ -1,3 +1,5 @@
+import { ProjectDetails } from "./types";
+
 export const experience = [
   {
     title: "Project Intern",
@@ -64,4 +66,21 @@ export const languages = [
   { name: "Github", image: "/assets/skills/github.svg" },
   { name: "VS Code", image: "/assets/skills/visualstudiocode.svg" },
   { name: "Postman", image: "/assets/skills/postman.svg" },
+];
+
+import mirrormates from "../../../public/assets/work/mirrormates.png";
+
+export const projects: ProjectDetails[] = [
+  {
+    image: mirrormates,
+    title: "MirrorMates",
+    description: "tbd",
+    tech: ["NextJS", "TypeScript", "TailwindCSS", "PostgreSQL"],
+    github: null,
+    githubFrontend: "https://github.com/var-ad/MirrorMates-frontend",
+    githubBackend: "https://github.com/var-ad/MirrorMates-backend",
+    healthFrontend: "https://mirrormates.varad.fyi/api/health",
+    healthBackend: "https://api.mirrormates.varad.fyi/health",
+    live: "https://mirrormates.varad.fyi",
+  },
 ];
