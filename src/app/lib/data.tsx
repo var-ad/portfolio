@@ -79,7 +79,7 @@ export const projects: ProjectDetails[] = [
     github: null,
     githubFrontend: "https://github.com/var-ad/MirrorMates-frontend",
     githubBackend: "https://github.com/var-ad/MirrorMates-backend",
-    healthFrontend: "https://mirrormates.varad.fyi/api/health",
+    healthFrontend: "https://mirrormates.varad.fyi",
     healthBackend: "https://api.mirrormates.varad.fyi/health",
     live: "https://mirrormates.varad.fyi",
   },
