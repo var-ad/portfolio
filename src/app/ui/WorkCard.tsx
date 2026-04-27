@@ -29,6 +29,18 @@ export function WorkCard({
     "200 OK" | "503 Service Unavailable" | "Waiting"
   >("Waiting");
 
+  function getHealthColor(
+    status: "200 OK" | "503 Service Unavailable" | "Waiting",
+  ) {
+    if (status === "200 OK") {
+      return "#22c55e";
+    }
+    if (status === "503 Service Unavailable") {
+      return "#ef4444";
+    }
+    return "currentColor";
+  }
+
   useEffect(() => {
     let cancelled = false;
 
@@ -112,7 +124,7 @@ export function WorkCard({
           );
         })}
       </div>
-      <div className="flex gap-4 text-sm">
+      <div className="flex gap-4 text-sm flex-nowrap">
         {live && (
           <Link
             href={live}
@@ -128,7 +140,11 @@ export function WorkCard({
             target="_blank"
             className="flex items-center gap-2 rounded border px-2 py-1 hover:bg-white hover:text-black"
           >
-            FE ({feHealthStatus}) <Github size={18} />
+            FE
+            <span style={{ color: getHealthColor(feHealthStatus) }}>
+              {feHealthStatus}
+            </span>
+            <Github size={18} />
           </Link>
         )}
         {githubBackend && (
@@ -137,7 +153,11 @@ export function WorkCard({
             target="_blank"
             className="flex items-center gap-2 rounded border px-2 py-1 hover:bg-white hover:text-black"
           >
-            BE ({beHealthStatus}) <Github size={18} />
+            BE
+            <span style={{ color: getHealthColor(beHealthStatus) }}>
+              {beHealthStatus}
+            </span>
+            <Github size={18} />
           </Link>
         )}
         {github && (

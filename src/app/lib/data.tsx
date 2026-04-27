@@ -37,6 +37,8 @@ export const experience = [
 export const languages = [
   { name: "HTML", image: "/assets/skills/html5.svg" },
   { name: "CSS", image: "/assets/skills/css3.svg" },
+  { name: "Docker", image: "/assets/skills/docker.svg" },
+  { name: "Oracle OCI", image: "/assets/skills/oracle.svg" },
   { name: "Javascript", image: "/assets/skills/javascript.svg" },
   // { name: "Dart", image: "/assets/skills/dart.svg" },
   { name: "Java", image: "/assets/skills/java.svg" },
@@ -74,8 +76,18 @@ export const projects: ProjectDetails[] = [
   {
     image: mirrormates,
     title: "MirrorMates",
-    description: "tbd",
-    tech: ["NextJS", "TypeScript", "TailwindCSS", "PostgreSQL"],
+    description:
+      "A Johari Window-based platform for self-awareness through anonymous peer feedback. Users invite peers to share perceptions, and the platform maps responses into blind spots, strengths, and hidden areas. With 50+ users and 200+ feedback submissions.",
+    tech: [
+      "NextJS",
+      "NodeJS",
+      "TypeScript",
+      "TailwindCSS",
+      "Prisma",
+      "Docker",
+      "PostgreSQL",
+      "MongoDB",
+    ],
     github: null,
     githubFrontend: "https://github.com/var-ad/MirrorMates-frontend",
     githubBackend: "https://github.com/var-ad/MirrorMates-backend",

@@ -8,6 +8,8 @@ import react from "../../../public/assets/skills/react.svg";
 import node from "../../../public/assets/skills/nodedotjs.svg";
 import androidstudio from "../../../public/assets/skills/androidstudio.svg";
 import bootstrap from "../../../public/assets/skills/bootstrap.svg";
+import docker from "../../../public/assets/skills/docker.svg";
+import oracle from "../../../public/assets/skills/oracle.svg";
 import dart from "../../../public/assets/skills/dart.svg";
 import express from "../../../public/assets/skills/express.svg";
 import figma from "../../../public/assets/skills/figma.svg";
@@ -76,6 +78,11 @@ export const skills: Record<string, Skill> = {
     icon: bootstrap,
     color: "#7952B3",
   },
+  DOCKER: {
+    name: "Docker",
+    icon: docker,
+    color: "#2560FF",
+  },
   DART: {
     name: "Dart",
     icon: dart,
@@ -140,6 +147,11 @@ export const skills: Record<string, Skill> = {
     name: "NextJS",
     icon: nextjs,
     color: "#fff",
+  },
+  "ORACLE OCI": {
+    name: "Oracle OCI",
+    icon: oracle,
+    color: "#F80000",
   },
   POSTMAN: {
     name: "Postman",
