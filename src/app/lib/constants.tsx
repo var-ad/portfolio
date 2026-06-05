@@ -12,15 +12,18 @@ import docker from "../../../public/assets/skills/docker.svg";
 import oracle from "../../../public/assets/skills/oracle.svg";
 import dart from "../../../public/assets/skills/dart.svg";
 import express from "../../../public/assets/skills/express.svg";
+import fastapi from "../../../public/assets/skills/fastapi.svg";
 import figma from "../../../public/assets/skills/figma.svg";
 import firebase from "../../../public/assets/skills/firebase.svg";
 import flutter from "../../../public/assets/skills/flutter.svg";
 import framermotion from "../../../public/assets/skills/framer-motion.svg";
 import git from "../../../public/assets/skills/git.svg";
 import github from "../../../public/assets/skills/github.svg";
+import go from "../../../public/assets/skills/go.svg";
 import gsap from "../../../public/assets/skills/gsap.svg";
 import java from "../../../public/assets/skills/java.svg";
 import jira from "../../../public/assets/skills/jira.svg";
+import langgraph from "../../../public/assets/skills/langgraph.svg";
 import mongodb from "../../../public/assets/skills/mongodb.svg";
 import nextjs from "../../../public/assets/skills/nextdotjs.svg";
 import postman from "../../../public/assets/skills/postman.svg";
@@ -93,6 +96,11 @@ export const skills: Record<string, Skill> = {
     icon: express,
     color: "#000000",
   },
+  FASTAPI: {
+    name: "FastAPI",
+    icon: fastapi,
+    color: "#009688",
+  },
   FIGMA: {
     name: "Figma",
     icon: figma,
@@ -123,6 +131,11 @@ export const skills: Record<string, Skill> = {
     icon: github,
     color: "#181717",
   },
+  GO: {
+    name: "Go",
+    icon: go,
+    color: "#00ADD8",
+  },
   GSAP: {
     name: "GSAP",
     icon: gsap,
@@ -137,6 +150,11 @@ export const skills: Record<string, Skill> = {
     name: "Jira",
     icon: jira,
     color: "#0052CC",
+  },
+  LANGGRAPH: {
+    name: "LangGraph",
+    icon: langgraph,
+    color: "#2596be",
   },
   MONGODB: {
     name: "MongoDB",

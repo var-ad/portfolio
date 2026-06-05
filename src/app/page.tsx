@@ -111,8 +111,8 @@ export default function Home() {
           <p>
             Welcome to my for your information! I am Varad Chaskar, an aspiring
             software developer from Pune, India. I love converting ideas into
-            products. I have worked with technologies like Python, Reactjs,
-            Nextjs, PostgreSQL, Nodejs etc.
+            products. I have worked with technologies like Python, NextJS,
+            PostgreSQL, MongoDB, NodeJS, LangGraph etc.
           </p>
 
           <p>
@@ -123,11 +123,11 @@ export default function Home() {
           <p>
             Currently I am working on{" "}
             <Link
-              href="https://mirrormates.varad.fyi"
+              href="https://complianceauditor.varad.fyi"
               className="text-accent underline-offset-4 hover:underline"
               target="_blank"
             >
-              MirrorMates
+              Compliance Auditor AI
             </Link>{" "}
           </p>
 
@@ -177,12 +177,12 @@ export default function Home() {
           Skills
         </h2>
         <div className="w-full px-4 sm:px-6 md:px-8 overflow-hidden">
-          <InfiniteMovingCards items={languages.slice(0, 10)} />
+          <InfiniteMovingCards items={languages.slice(0, 8)} />
           <InfiniteMovingCards
-            items={languages.slice(10, 20)}
+            items={languages.slice(8, 16)}
             direction="right"
           />
-          <InfiniteMovingCards items={languages.slice(20)} />
+          <InfiniteMovingCards items={languages.slice(16, 24)} />
         </div>
         <h2 className="text-4xl font-bold text-left font-bubblegum">Contact</h2>
         <div className="flex flex-col md:flex-row h-full gap-4 font-mono">
