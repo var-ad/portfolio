@@ -5,7 +5,7 @@ import ContactForm from "./ui/ContactForm";
 import ExperienceCard from "./ui/ExperienceCard";
 import { WorkCard } from "./ui/WorkCard";
 import SectionLayout from "./SectionLayout";
-import { File, Mail, Phone } from "lucide-react";
+import { File, Mail, Phone, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { InfiniteMovingCards } from "./ui/InfiniteMovingCards";
@@ -152,9 +152,9 @@ export default function Home() {
             />
           ))}
         </div>
-        {/* WORK SECTION */}
+        {/* PROJECTS SECTION */}
         <h2 id="projects" className="text-4xl font-bold font-bubblegum">
-          Work
+          Projects
         </h2>
         <div className="mt-6 grid w-full grid-cols-1 gap-8 md:grid-cols-2">
           {projects.map((project, idx) => (
@@ -227,10 +227,25 @@ export default function Home() {
                   <IconCopy />
                 </button>
               </div>
-              <div className="flex items-center gap-2">
-                <File />{" "}
-                <Link href="https://resume.varad.fyi" target="_blank">
-                  Resume
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-2">
+                  <File />
+                  <Link
+                    href="https://resume.varad.fyi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Resume
+                  </Link>
+                </div>
+                <Link
+                  href="https://resume.varad.fyi"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Open Resume"
+                  className="icon-button text-sm"
+                >
+                  <ExternalLink />
                 </Link>
               </div>
             </div>
