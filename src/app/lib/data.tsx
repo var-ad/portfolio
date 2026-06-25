@@ -60,7 +60,7 @@ export const languages = [
 ];
 
 import mirrormates from "../../../public/assets/work/mirrormates.png";
-import underconstruction from "../../../public/assets/work/underconstruction.png";
+import complianceauditorai from "../../../public/assets/work/complianceauditorai.png";
 
 export const projects: ProjectDetails[] = [
   {
@@ -85,14 +85,16 @@ export const projects: ProjectDetails[] = [
     live: "https://mirrormates.varad.fyi",
   },
   {
-    image: underconstruction,
-    title: "Compliance Auditor AI (Under Construction)",
+    image: complianceauditorai,
+    title: "Compliance Auditor AI",
     description:
-      "A multi-agent AI compliance auditor that scans GitHub repositories against SOC 2, ISO 27001, GDPR, and India's DPDP Act 2023. Uses LangGraph orchestration, Semgrep static analysis, OSV dependency scanning, and RAG over official legal documents to generate grounded compliance gap reports with severity scoring.",
-    tech: ["Python", "FastAPI", "LangGraph", "NextJS"],
-    github: "https://github.com/var-ad/Compliance-Auditor-AI",
-    healthFrontend: null,
-    healthBackend: null,
-    live: null,
+      "Multi agent GitHub security scanner orchestrating 9 parallel security tools via LangGraph, mapping vulnerabilities to SOC 2, ISO 27001, GDPR, and DPDP controls with RAG grounded explanations and severity weighted scoring.",
+    tech: ["Python", "FastAPI", "LangGraph", "ReactJS", "Docker", "PostgreSQL"],
+    github: null,
+    githubFrontend: "https://github.com/var-ad/Compliance-Auditor-AI-frontend",
+    githubBackend: "https://github.com/var-ad/Compliance-Auditor-AI",
+    healthFrontend: "https://complianceauditor.varad.fyi",
+    healthBackend: "https://api.complianceauditor.varad.fyi/health",
+    live: "https://complianceauditor.varad.fyi",
   },
 ];

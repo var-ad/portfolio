@@ -22,6 +22,8 @@ export function WorkCard({
   live,
 }: ProjectDetails) {
   const primaryUrl = live ?? githubFrontend ?? githubBackend ?? github;
+  const frontendUrl = githubFrontend ?? healthFrontend;
+  const backendUrl = githubBackend ?? healthBackend;
   const [feHealthStatus, setFeHealthStatus] = useState<
     "200 OK" | "503 Service Unavailable" | "Waiting"
   >("Waiting");
@@ -134,9 +136,9 @@ export function WorkCard({
             Live <ExternalLink size={18} />
           </Link>
         )}
-        {githubFrontend && (
+        {frontendUrl && (
           <Link
-            href={githubFrontend}
+            href={frontendUrl}
             target="_blank"
             className="flex items-center gap-2 rounded border px-2 py-1 hover:bg-white hover:text-black"
           >
@@ -147,9 +149,9 @@ export function WorkCard({
             <Github size={18} />
           </Link>
         )}
-        {githubBackend && (
+        {backendUrl && (
           <Link
-            href={githubBackend}
+            href={backendUrl}
             target="_blank"
             className="flex items-center gap-2 rounded border px-2 py-1 hover:bg-white hover:text-black"
           >
